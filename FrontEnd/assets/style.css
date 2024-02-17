@@ -109,6 +109,7 @@ section {
 
 body {
 	line-height: 1;
+
 }
 
 ol,
@@ -140,10 +141,12 @@ body {
 	margin: auto;
 	font-family: 'Work Sans';
 	font-size: 14px;
+	z-index: 1;
 }
 
 /**pour la bande noire de l'édition**/
 .edition {
+	display: none;
 	width: 100%;
 	height: 59px;
 	/*comme y a pas de responsivité, je peux garder des valeurs fixes ?*/
@@ -158,7 +161,10 @@ body {
 	height: 19px;
 	display: flex;
 	white-space: nowrap;
+	color: white;
 }
+
+
 
 .editeur button {
 	color: white;
@@ -450,7 +456,7 @@ footer nav ul {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	/* z-index: 1000;  Assure que l'overlay est au-dessus du reste du contenu */
+	z-index: 0;
 }
 
 .divModal1 {
@@ -568,20 +574,21 @@ footer nav ul {
 }
 
 /**** styles pour la deuxième modal****/
-#btnback{
+#btnback {
 	position: relative;
-    left: 5%;
+	left: 5%;
 	top: 2%;
 }
-.fa-solid{
+
+.fa-solid {
 	font-size: 20px;
-	
+
 }
 
 #btnFermer {
-    position: relative;
-    left: 90%;
-    top: 2%;
+	position: relative;
+	left: 90%;
+	top: 2%;
 }
 
 .rectangle {
@@ -662,7 +669,8 @@ footer nav ul {
 	right: 190px;
 }
 
-.inputTitre, .inputCategorie {
+.inputTitre,
+.inputCategorie {
 	width: 420px;
 	height: 51px;
 	box-shadow: 0px 4px 14px 0px #00000017;
