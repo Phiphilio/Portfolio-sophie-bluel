@@ -212,17 +212,27 @@ btnback.addEventListener("click", async function () {
 const btnFermer = document.querySelector("#btnFermer")
 btnFermer.addEventListener("click", async function () {
 
-    const divModal1 = document.querySelector(".divModal1")
-    divModal1.style.display = "none"
+    const divModal1 = document.querySelector(".divModal1");
+    divModal1.style.display = "none";
 
-    const divModal2 = document.querySelector(".divModal2")
-    divModal2.style.display = "none"
+    const divModal2 = document.querySelector(".divModal2");
+    divModal2.style.display = "none";
 
 
-    const overlay = document.querySelector(".overlay")
-    overlay.style.display = "none"
+    const overlay = document.querySelector(".overlay");
+    overlay.style.display = "none";
 })
 
+const overlay = document.querySelector(".overlay")
+overlay.addEventListener("click", async function (){
+   
+    overlay.style.display = "none";
+    const divModal1 = document.querySelector(".divModal1");
+    divModal1.style.display = "none";
+
+    const divModal2 = document.querySelector(".divModal2");
+    divModal2.style.display = "none";
+})
 
 
 
