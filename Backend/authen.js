@@ -21,14 +21,17 @@ if (clef !== null) {
         modal1();
     })
 
-
     //ajout du logout
-    const logout = document.querySelector(".noLine")
-    logout.innerHTML = "logout"
+    const logout = document.querySelector(".noLine");
+    logout.innerHTML = "logout";
 
     //suppression des groupes
     const groupe = document.querySelector(".groupe");
     groupe.innerHTML = "";
+
+    //ajout du logo à côté du titre
+    const portf = document.querySelector(".port-titre span ");
+    portf.style.display= "block";
 }
 
 async function ajouterImage(image) {
