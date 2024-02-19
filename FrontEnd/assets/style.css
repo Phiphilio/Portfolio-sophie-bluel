@@ -345,7 +345,20 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+/**** ajout de ma part****/
+.port-titre {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin-bottom: 1em;
+    justify-content: center;
+}
 
+.port-titre span {
+    margin-left: 35px;
+    margin-top: 10px;
+	display: none;
+}
 .groupe {
 	width: 40.6%;
 	/*585*/
