@@ -614,9 +614,13 @@ footer nav ul {
 	flex-direction: column;
 }
 
-.rectangle img {
-	position: relative;
-
+#imgRectangle {
+    /* width: 68.14px; */
+    /* height: 59.62px; */
+    /* left: 3.93px; */
+    position: relative;
+    color: #B9C5CC;
+    font-size: 70px;
 }
 
 #btnRectangle {
