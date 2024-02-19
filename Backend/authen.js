@@ -11,34 +11,24 @@ async function recupWorks() {
 const clef = window.sessionStorage.getItem("clef"); // récupère la clef et la stock dans une variable
 
 if (clef !== null) {
-    // création du div qui sera la bande noire du  mode édition
-    const bandeNoire = document.createElement("div");
-    //je lui donne une class pour pouvoir le gérer en css
-    bandeNoire.classList.add("edition");
-    //création du div qui contiendra le texte et l'icone
-    const editeur = document.createElement("div")
-    editeur.classList.add("editeur")
-    //texte 
-    const paragraphe = document.createElement("button")
-    paragraphe.classList.add("btnModification");
-    paragraphe.innerText = " \u270F mode edition";// en attendant de trouver le bon symbole, j'ai mis ça
 
-    //appel de la fonction générerDynamiquement
-    paragraphe.addEventListener("click", async function () {
+    const edition = document.querySelector("#edition");
+    edition.style.display = "flex";
+    const btnModification = document.querySelector(".btnModification");
+
+    //appel de la fonction modal1()
+    btnModification.addEventListener("click", async function () {
         modal1();
     })
 
-    //mise en place dans l'arbre dom
-    editeur.appendChild(paragraphe);
-    bandeNoire.appendChild(editeur);
-    const header = document.getElementById("header")
-    const body = document.body
-    // j'utilise la method insertBefore
-    body.insertBefore(bandeNoire, header);
 
     //ajout du logout
     const logout = document.querySelector(".noLine")
     logout.innerHTML = "logout"
+
+    //suppression des groupes
+    const groupe = document.querySelector(".groupe");
+    groupe.innerHTML = "";
 }
 
 async function ajouterImage(image) {
@@ -77,25 +67,25 @@ const infoformulaire = new FormData(myForm)
 
 
 // fonction pour supprimer les images
-    async function modifierImage(id) {
-        try {
-            const response = await fetch(`http://localhost:5678/api/works/${id}`, {
-                method: "DELETE", // ou "PATCH" selon votre cas d'utilisation
-                headers: {
-                    "Authorization": `Bearer ${clef}`, // Assurez-vous que votre clé d'autorisation est correcte
-                }
-            });
-    
-            if (response.ok) {
-                console.log(`Image avec l'ID ${id} supprimée avec succès.`);
-                alert("Image  supprimée avec succès.");
-            } else {
-                console.error(`La suppression de l'image avec l'ID ${id} a échoué.`);
+async function modifierImage(id) {
+    try {
+        const response = await fetch(`http://localhost:5678/api/works/${id}`, {
+            method: "DELETE", // ou "PATCH" selon votre cas d'utilisation
+            headers: {
+                "Authorization": `Bearer ${clef}`, // Assurez-vous que votre clé d'autorisation est correcte
             }
-        } catch (error) {
-            console.error('Erreur lors de la suppression de l\'image :', error);
+        });
+
+        if (response.ok) {
+            console.log(`Image avec l'ID ${id} supprimée avec succès.`);
+            alert("Image  supprimée avec succès.");
+        } else {
+            console.error(`La suppression de l'image avec l'ID ${id} a échoué.`);
         }
+    } catch (error) {
+        console.error('Erreur lors de la suppression de l\'image :', error);
     }
+}
 
 
 
