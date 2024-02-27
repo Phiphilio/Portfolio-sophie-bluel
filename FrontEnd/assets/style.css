@@ -472,6 +472,7 @@ footer nav ul {
 }
 
 .divModal1 {
+	display: none;
 	width: 630px;
 	height: 688px;
 	top: 50%;
@@ -479,6 +480,7 @@ footer nav ul {
 	border-radius: 10px;
 	background: #FFFFFF;
 	position: absolute;
+	z-index : 2;
 }
 
 .divModal2 {
@@ -490,6 +492,7 @@ footer nav ul {
 	border-radius: 10px;
 	background: #FFFFFF;
 	position: absolute;
+	z-index : 2;
 }
 
 .divModal1 h1,
