@@ -64,16 +64,50 @@ submit.addEventListener("click", async function(e) {
     }
 });*/
 
-async inputChange (){
-   // change l'affichage quand on a chargé une image
-   const icone = document.querySelector("#imgRectangle");
-   icone.style.display = "none";
+async function inputChange() {
+    // change l'affichage quand on a chargé une image
+    const icone = document.querySelector("#imgRectangle");
+    icone.style.display = "none";
+
+    const input = document.querySelector("#inputId");
+    const imagePreview = document.getElementById('imagePreview');
+
+    // Vérification s'il y a des fichiers sélectionnés
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+
+        // Lecture du contenu du fichier sélectionné en tant qu'URL de données
+        reader.readAsDataURL(input.files[0]);
+
+        // Attente que la lecture soit terminée
+        await new Promise((resolve, reject) => {
+            reader.onload = function (e) {
+                // Création d'un élément img pour afficher l'image
+                const img = document.createElement('img');
+                // Définition de la source de l'image avec l'URL de données
+                img.src = e.target.result;
+                // Ajout de l'image à l'élément de prévisualisation
+                imagePreview.innerHTML = '';
+                imagePreview.appendChild(img);
+                resolve();
+            };
+        });
+    }
 }
 
+
 async function ajouterImage() {
+    /**
+     *  mon code ne marchait pas pour 2 raisons
+     * 1) les "name" dans mon formulaire doivent correspendre aux noms attendus pour chaque propriété de l'objet 
+     * 2) parce que les deux éléments qui suivent étaient hors de la fonction, ce qui faisait que j'envoyais des valeurs vides
+     * 3) la propriété "catgory" prend des chiffres et non pas les noms de catégorie directement. 
+     * dans la version finale on aura la possiblité de séléctionner des catégorie, mais derrière chaque choix, je cacherai le chiffre correspondant
+     * 
+     */
     const myForm = document.querySelector("#myForm");
     const infoformulaire = new FormData(myForm);
-   
+
 
     try {
 
@@ -130,18 +164,34 @@ async function supprimerImage(id) {
     }
 }
 
+/*let viewportWidth, viewportHeight;
 
+function getSizeOfPage() {
+    // Récupérer la taille du document
+    const documentWidth = document.documentElement.scrollWidth;
+    const documentHeight = document.documentElement.scrollHeight;
 
+    // Calculer la taille totale de la page
+    const totalWidth = Math.max(documentWidth, viewportWidth);
+    const totalHeight = Math.max(documentHeight, viewportHeight);
 
+    return { width: totalWidth, height: totalHeight };
+}
+console.log(getSizeOfPage().height)*/
 
 async function modal1() {
 
-    //apparition de la modal
-    const overlay = document.querySelector(".overlay")
-    overlay.style.display = "block"//la modal passe de display : none à block, ce qui la fait apparaitre
+    //apparition de l'overlay
+    
+
+    const overlay = document.querySelector(".overlay");
+    overlay.style.display = "block";//la modal passe de display : none à block, ce qui la fait apparaitre
+   /* overlay.style.height = getSizeOfPage().height + "px";
+    overlay.style.width = getSizeOfPage().width + "px";*/
 
     //récupération de divModal1
-    const divModal1 = document.querySelector(".divModal1")
+    const divModal1 = document.querySelector(".divModal1");
+    divModal1.style.display = "block";
     const divTravaux = document.querySelector(".divTravaux")
     //récupère les images
     const works = await recupWorks()
@@ -207,41 +257,15 @@ btnAjoutImage.addEventListener("click", async function () {
     const travauxModal2 = document.querySelector(".travauxModal2")
 
     travauxModal2.setAttribute("id", "travauxModal2")
-/*
-    //récupération de l'image du rectangle
-    const imgRectangle = document.querySelector(".imgRectangle")
+    btnValider.addEventListener("click", async function () {
 
-    // récupérer les input
-    const inputTitre = document.querySelector(".inputTitre")
-    const inputCategorie = document.querySelector(".inputCategorie")
-    const searchImage = document.querySelector("#searchImage")
-    //récupérer le bouton validé
-    const btnValider = document.querySelector("#btnValider")
-
-    infoformulaire.append("title", inputTitre.value)
-    infoformulaire.append("imageUrl", searchImage.value)
-    infoformulaire.append("categoryId", inputCategorie.value)
-    infoformulaire.append("id", 0)
-    infoformulaire.append("userId", 0)
-   
-   */ btnValider.addEventListener("click", async function () {
-        /* if (searchImage && inputCategorie && inputTitre) {
-             imgRectangle.src = searchImage.value
-             console.log(inputTitre.value)
-             console.log(searchImage.value)
-             console.log(inputCategorie.value)
-             
-         }*/
         ajouterImage();
     })
 
     //tous léléments de la deuxieme modal sont ajouté au DOM
     /**comme j'ai tout nettoyé, il fallait que je le redéfinisse avec un appendChild pour que le nouveau titre apparaisse */
     divModal2.appendChild(travauxModal2)
-    /*  if (searchImage.value) {
-          ajouterImage()
-          console.log("ça marche")
-      }*/
+
 })
 
 const btnback = document.querySelector("#btnback")
@@ -273,7 +297,7 @@ btnFermer.addEventListener("click", async function () {
     //rafraichit la page
     window.location.reload()
 })
-/*
+
 const overlay = document.querySelector(".overlay")
 overlay.addEventListener("click", async function () {
 
@@ -287,7 +311,6 @@ overlay.addEventListener("click", async function () {
     //rafraichit la page
     window.location.reload();
 })
-
 
 
 
