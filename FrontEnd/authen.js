@@ -35,7 +35,7 @@ if (clef !== null) {
 }
 
 
-const submit = document.querySelector("#btnValider");
+/*const submit = document.querySelector("#btnValider");
 
 submit.addEventListener("click", async function(e) {
     const reponse = document.querySelector("#myForm");
@@ -62,9 +62,18 @@ submit.addEventListener("click", async function(e) {
     } catch (erreur) {
         console.error("Erreur lors de la requête:", erreur);
     }
-});
+});*/
 
-/*async function ajouterImage(image) {
+async inputChange (){
+   // change l'affichage quand on a chargé une image
+   const icone = document.querySelector("#imgRectangle");
+   icone.style.display = "none";
+}
+
+async function ajouterImage() {
+    const myForm = document.querySelector("#myForm");
+    const infoformulaire = new FormData(myForm);
+   
 
     try {
 
@@ -74,10 +83,10 @@ submit.addEventListener("click", async function(e) {
 
                 "Authorization": `bearer ${clef}`// j'inclus la clef d'authorisation pour avoir le droit d'accès
             },
-            body: image
+            body: infoformulaire
         })// Convertir les données de l'objet FormData en un objet JavaScript pour l'afficher dans la console
         const formDataObject = {};
-        for (let [key, value] of image.entries()) {
+        for (let [key, value] of infoformulaire.entries()) {
             formDataObject[key] = value;
         }
 
@@ -94,9 +103,8 @@ submit.addEventListener("click", async function(e) {
 /**<form action='http://localhost/traitementbackend' method='POST'>
  * <button type='submit'>Envoyer</button>s
  */
-/*
-const myForm = document.querySelector("#myForm")
-const infoformulaire = new FormData(myForm)*/
+
+
 
 
 // fonction pour supprimer les images
@@ -113,7 +121,7 @@ async function supprimerImage(id) {
             console.log(`Image avec l'ID ${id} supprimée avec succès.`);
             alert("Image  supprimée avec succès.");
             const work = await fetch("http://localhost:5678/api/works").then(work => work.json());
-            
+
         } else {
             console.error(`La suppression de l'image avec l'ID ${id} a échoué.`);
         }
@@ -177,7 +185,7 @@ async function modal1() {
         })
     });
 
-    
+
 }
 
 
@@ -216,15 +224,15 @@ btnAjoutImage.addEventListener("click", async function () {
     infoformulaire.append("id", 0)
     infoformulaire.append("userId", 0)
    
-   */ /*btnValider.addEventListener("click", async function () {
+   */ btnValider.addEventListener("click", async function () {
         /* if (searchImage && inputCategorie && inputTitre) {
              imgRectangle.src = searchImage.value
              console.log(inputTitre.value)
              console.log(searchImage.value)
              console.log(inputCategorie.value)
              
-         }
-        ajouterImage(infoformulaire)
+         }*/
+        ajouterImage();
     })
 
     //tous léléments de la deuxieme modal sont ajouté au DOM
