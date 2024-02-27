@@ -14,8 +14,8 @@
 		crossorigin="anonymous" referrerpolicy="no-referrer">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script src="../Backend/dynamique.js" defer></script>
-	<script src="../Backend/authen.js" defer></script>
+	<script src="dynamique.js" defer></script>
+	<script src="authen.js" defer></script>
 </head>
 
 <body>
@@ -109,24 +109,22 @@
 			</label>
 			<h1 class="galerieModal2"> galerie photo</h1>
 			<div class="travauxModal2">
-				<form id="myForm" method="post" enctype="multipart/form-data" name = "myForm" >
-						<div class="rectangle" id="searchImage">
-							<i id="imgRectangle" class="fa-solid fa-image"></i>
-							<label id="label">
-								+ Ajouter une image
-								<input type="file"  name="imageUrl">
-							</label>
-						</div>
-						<h2 id="texteTitre">Titre</h2>
-						<input class="inputTitre" name="title"  value="erickson">
-						<h2 id="texteCategorie">Catégorie</h2>
-						<input class="inputCategorie" name="categoryId"  value="erickson">
-						<input type="hidden" name="userId" value="0"> 
-						<input type="hidden" name="id" value="0"> 
+				<form id="myForm" method="#" action="#" name="myForm">
+					<div class="rectangle" id="searchImage">
+						<i id="imgRectangle" class="fa-solid fa-image"></i>
+						<label id="label">
+							+ Ajouter une image
+							<input type="file" name="image">
+						</label>
 					</div>
-					<span></span>
-				<button type="submit" id="btnValider">Valider</button>
-		</form>
+					<h2 id="texteTitre">Titre</h2>
+					<input class="inputTitre" name="title" >
+					<h2 id="texteCategorie">Catégorie</h2>
+					<input class="inputCategorie" name="category" >
+			</div>
+			<span></span>
+			<button type="submit" id="btnValider">Valider</button>
+			</form>
 		</div>
 	</div>
 </body>
