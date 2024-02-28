@@ -201,6 +201,7 @@ async function modal1() {
     const pageSize = await getSizeOfPage();
     //attribuer la valeur 
    overlay.style.height = pageSize.height + "px";
+    overlay.style.width = pageSize.width + "px";
 
     //récupération de divModal1
     const divModal1 = document.querySelector(".divModal1");
