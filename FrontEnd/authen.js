@@ -154,6 +154,7 @@ async function supprimerImage(id) {
         if (response.ok) {
             console.log(`Image avec l'ID ${id} supprimée avec succès.`);
             alert("Image  supprimée avec succès.");
+            
             const work = await fetch("http://localhost:5678/api/works").then(work => work.json());
 
         } else {
@@ -243,6 +244,10 @@ async function modal1() {
     btnsupprime.forEach(btnsupprime => {
         btnsupprime.addEventListener("click", async function () {
             const idImage = btnsupprime.dataset.idImage;
+            const imageElement = document.getElementById(idImage);
+            if (imageElement) {
+                imageElement.style.display = "none";
+            }
             supprimerImage(idImage)
         })
     });
@@ -291,8 +296,23 @@ btnback.addEventListener("click", async function (event) {
 
 })
 
-const btnFermer = document.querySelector("#btnFermer")
-btnFermer.addEventListener("click", async function (event) {
+const btnFermer1 = document.querySelector("#btnFermer1")
+btnFermer1.addEventListener("click", async function (event) {
+
+    const divModal1 = document.querySelector(".divModal1");
+    divModal1.style.display = "none";
+
+    const divModal2 = document.querySelector(".divModal2");
+    divModal2.style.display = "none";
+
+
+    const overlay = document.querySelector(".overlay");
+    overlay.style.display = "none";
+
+})
+
+const btnFermer2 = document.querySelector("#btnFermer2")
+btnFermer2.addEventListener("click", async function (event) {
 
     const divModal1 = document.querySelector(".divModal1");
     divModal1.style.display = "none";

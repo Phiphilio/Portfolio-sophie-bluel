@@ -600,7 +600,7 @@ footer nav ul {
 
 }
 
-#btnFermer {
+#btnFermer1,#btnFermer2 {
 	position: relative;
 	left: 90%;
 	top: 2%;
