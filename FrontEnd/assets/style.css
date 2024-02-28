@@ -624,6 +624,7 @@ footer nav ul {
     position: relative;
     color: #B9C5CC;
     font-size: 70px;
+	bottom: 5px;
 }
 
 #btnRectangle {
@@ -640,23 +641,30 @@ footer nav ul {
 
 
 #label {
-	display: flex;
-	position: relative;
-	top: 25px;
-	left: 1px;
-	width: 173px;
-	height: 36px;
-	background-color: #CBD6DC;
-	color: #306685;
-	border-radius: 60px;
-	border: 1px;
-	align-items: center;
-	justify-content: center;
-	cursor: pointer;
+    display: flex;
+    position: relative;
+    top: 2px;
+    left: 1px;
+    width: 173px;
+    height: 36px;
+    background-color: #CBD6DC;
+    color: #306685;
+    border-radius: 60px;
+    border: 1px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
 #label input {
 	display: none;
+}
+
+.textRectangle {
+    top: 145px;
+    position: absolute;
+    font-size: 10px;
+    white-space: nowrap;
 }
 
 #travauxModal2 {
