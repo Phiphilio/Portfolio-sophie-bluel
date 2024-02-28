@@ -173,19 +173,16 @@ async function getSizeOfPage() {
     const documentWidth = document.documentElement.scrollWidth;
     const documentHeight = document.documentElement.scrollHeight;
 
-    console.log(documentWidth);
+    
      // Récupérer la taille de la fenêtre de visualisation
      const viewportWidth = window.innerWidth;
      const viewportHeight = window.innerHeight;
 
-     console.log(viewportWidth);
+    
 
     // Calculer la taille totale de la page
     const totalWidth = Math.max(documentWidth, viewportWidth);
     const totalHeight = Math.max(documentHeight, viewportHeight);
-
-    console.log(totalWidth);
-    console.log(totalHeight);
 
     return { width: totalWidth, height: totalHeight };
 }
@@ -202,6 +199,7 @@ async function modal1() {
     //attribuer la valeur 
    overlay.style.height = pageSize.height + "px";
     overlay.style.width = pageSize.width + "px";
+    document.body.style.overflowX = "hidden";
 
     //récupération de divModal1
     const divModal1 = document.querySelector(".divModal1");
@@ -283,7 +281,7 @@ btnAjoutImage.addEventListener("click", async function () {
 })
 
 const btnback = document.querySelector("#btnback")
-btnback.addEventListener("click", async function () {
+btnback.addEventListener("click", async function (event) { 
 
     const divModal1 = document.querySelector(".divModal1")
     divModal1.style.display = "block"
@@ -291,12 +289,10 @@ btnback.addEventListener("click", async function () {
     const divModal2 = document.querySelector(".divModal2")
     divModal2.style.display = "none";
 
-    //rafraichit la page
-    window.location.reload();
 })
 
 const btnFermer = document.querySelector("#btnFermer")
-btnFermer.addEventListener("click", async function () {
+btnFermer.addEventListener("click", async function (event) {
 
     const divModal1 = document.querySelector(".divModal1");
     divModal1.style.display = "none";
@@ -308,8 +304,6 @@ btnFermer.addEventListener("click", async function () {
     const overlay = document.querySelector(".overlay");
     overlay.style.display = "none";
 
-    //rafraichit la page
-    window.location.reload()
 })
 
 const overlay = document.querySelector(".overlay")
