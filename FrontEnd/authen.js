@@ -164,30 +164,43 @@ async function supprimerImage(id) {
     }
 }
 
-/*let viewportWidth, viewportHeight;
 
-function getSizeOfPage() {
+//pour avoir la longueur de toute la page, ça servira pour la modal
+let viewportWidth, viewportHeight;
+
+async function getSizeOfPage() {
     // Récupérer la taille du document
     const documentWidth = document.documentElement.scrollWidth;
     const documentHeight = document.documentElement.scrollHeight;
+
+    console.log(documentWidth);
+     // Récupérer la taille de la fenêtre de visualisation
+     const viewportWidth = window.innerWidth;
+     const viewportHeight = window.innerHeight;
+
+     console.log(viewportWidth);
 
     // Calculer la taille totale de la page
     const totalWidth = Math.max(documentWidth, viewportWidth);
     const totalHeight = Math.max(documentHeight, viewportHeight);
 
+    console.log(totalWidth);
+    console.log(totalHeight);
+
     return { width: totalWidth, height: totalHeight };
 }
-console.log(getSizeOfPage().height)*/
+getSizeOfPage() ;
 
+//fonction pour créer la première modal
 async function modal1() {
 
     //apparition de l'overlay
-    
-
     const overlay = document.querySelector(".overlay");
     overlay.style.display = "block";//la modal passe de display : none à block, ce qui la fait apparaitre
-   /* overlay.style.height = getSizeOfPage().height + "px";
-    overlay.style.width = getSizeOfPage().width + "px";*/
+    // Attendre que getSizeOfPage() récupère les dimensions de la page
+    const pageSize = await getSizeOfPage();
+    //attribuer la valeur 
+   overlay.style.height = pageSize.height + "px";
 
     //récupération de divModal1
     const divModal1 = document.querySelector(".divModal1");
