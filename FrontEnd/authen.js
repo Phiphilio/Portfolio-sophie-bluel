@@ -155,8 +155,11 @@ async function ajouterImage() {
 
         console.log("Données envoyées :", formDataObject);
         const resultat = reponse.json();
-        console.log("résultat :", resultat)
-        console.log(reponse.status)
+        console.log("résultat :", resultat);
+        console.log(reponse.status);
+        if (reponse.status === 400) {
+            alert("le formulaire n'a pas été correctement rempli");
+        }
     } catch (erreur) {
         console.error("erreur : ", erreur)
     }
@@ -273,9 +276,12 @@ async function modal1() {
     btnsupprime.forEach(btnsupprime => {
         btnsupprime.addEventListener("click", async function () {
             const idImage = btnsupprime.dataset.idImage;
-            const imageElement = document.getElementById(idImage);
-            if (imageElement) {
-                imageElement.style.display = "none";
+            const imageElement = document.querySelector(`[data-id="${idImage}"]`);
+            const parentElement = imageElement.parentNode;
+
+            console.log(parentElement);
+            if (parentElement) {
+                parentElement.remove();
             }
             supprimerImage(idImage)
         })
