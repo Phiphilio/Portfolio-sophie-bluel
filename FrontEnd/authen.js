@@ -323,8 +323,10 @@ btnAjoutImage.addEventListener("click", async function () {
 const btnback = document.querySelector("#btnback")
 btnback.addEventListener("click", async function (event) {
 
-    const divModal1 = document.querySelector(".divModal1")
-    divModal1.style.display = "block"
+
+
+    const divModal1 = document.querySelector(".divModal1");
+    divModal1.style.display = "block";
 
     const divModal2 = document.querySelector(".divModal2")
     divModal2.style.display = "none";
@@ -333,6 +335,10 @@ btnback.addEventListener("click", async function (event) {
 
 const btnFermer1 = document.querySelector("#btnFermer1")
 btnFermer1.addEventListener("click", async function (event) {
+
+    //pour ne pas que lees éléments se superposent avec ceux qui seront crées par la suite
+    const travauxModal1 = document.querySelector(".divTravaux");
+    travauxModal1.innerHTML = "";
 
     const divModal1 = document.querySelector(".divModal1");
     divModal1.style.display = "none";
@@ -349,6 +355,10 @@ btnFermer1.addEventListener("click", async function (event) {
 const btnFermer2 = document.querySelector("#btnFermer2")
 btnFermer2.addEventListener("click", async function (event) {
 
+    //pour ne pas que lees éléments se superposent avec ceux qui seront crées par la suite
+    const travauxModal1 = document.querySelector(".divTravaux");
+    travauxModal1.innerHTML = "";
+
     const divModal1 = document.querySelector(".divModal1");
     divModal1.style.display = "none";
 
@@ -364,6 +374,10 @@ btnFermer2.addEventListener("click", async function (event) {
 const overlay = document.querySelector(".overlay")
 overlay.addEventListener("click", async function () {
 
+    //pour ne pas que lees éléments se superposent avec ceux qui seront crées par la suite
+    const travauxModal1 = document.querySelector(".divTravaux");
+    travauxModal1.innerHTML = "";
+
     overlay.style.display = "none";
     const divModal1 = document.querySelector(".divModal1");
     divModal1.style.display = "none";
@@ -371,8 +385,6 @@ overlay.addEventListener("click", async function () {
     const divModal2 = document.querySelector(".divModal2");
     divModal2.style.display = "none";
 
-    //rafraichit la page
-    window.location.reload();
 })
 
 
