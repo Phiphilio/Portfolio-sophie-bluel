@@ -607,6 +607,7 @@ footer nav ul {
 }
 
 .rectangle {
+	display: block;
 	align-items: center;
 	width: 420px;
 	height: 169px;
@@ -615,6 +616,17 @@ footer nav ul {
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
+}
+
+#groupeRectangle {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.previewRectangle{
+	width: 129px;
+	height: 193px;
 }
 
 #imgRectangle {
