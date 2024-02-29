@@ -106,7 +106,13 @@ async function ajouterImage() {
      * 
      */
     const myForm = document.querySelector("#myForm");
+    //j'ajoute la valeur selectionnée dans le inout caché qui porte le name "category" et qui va envoyer la donnée au bidule
+    const selectCategorie = document.querySelector(".selectCategorie").value;
+    const inputCategorie = document.querySelector(".inputCategorie");
+    inputCategorie.value = selectCategorie;
+
     const infoformulaire = new FormData(myForm);
+    console.log("contenu de l'objet infoformulaire",infoformulaire);
 
 
     try {

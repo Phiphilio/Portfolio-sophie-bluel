@@ -703,7 +703,7 @@ footer nav ul {
 }
 
 .inputTitre,
-.inputCategorie {
+.inputCategorie, .selectCategorie {
 	width: 420px;
 	height: 51px;
 	box-shadow: 0px 4px 14px 0px #00000017;

@@ -61,7 +61,7 @@
 				<button class="tous">Tous</button>
 				<button class="objets">Objets</button>
 				<button class="appartements">Appartements</button>
-				<button class="hotels">Hotels et restaurants</button>
+				<button class="hotels">Hotels & restaurants</button>
 			</div>
 			<div class="gallery"> <!--
 			<figure>
@@ -124,7 +124,12 @@
 					<h2 id="texteTitre">Titre</h2>
 					<input class="inputTitre" name="title" >
 					<h2 id="texteCategorie">Catégorie</h2>
-					<input class="inputCategorie" name="category" >
+					<select class="selectCategorie">
+						<option value="1">Objets</option>
+						<option value="2">Appartements</option>
+						<option value="3">Hotels & restaurants</option>
+					</select>
+					<input type= "hidden"class="inputCategorie" name="category" >
 			</div>
 			<span></span>
 			<button type="submit" id="btnValider">Valider</button>
