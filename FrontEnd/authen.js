@@ -64,13 +64,20 @@ submit.addEventListener("click", async function(e) {
     }
 });*/
 
-async function inputChange() {
-    // change l'affichage quand on a chargé une image
-    const icone = document.querySelector("#imgRectangle");
-    icone.style.display = "none";
+const rechercheImage = document.querySelector("#inputId");
 
+rechercheImage.addEventListener("change", async function(){
+    await inputChange();
+})
+
+async function inputChange() {
+    // récupère la valeur de l'input
     const input = document.querySelector("#inputId");
-    const imagePreview = document.getElementById('imagePreview');
+    
+
+      // change l'affichage quand on a chargé une image
+   const icone = document.querySelector("#searchImage");
+   icone.innerHTML ="";
 
     // Vérification s'il y a des fichiers sélectionnés
     if (input.files && input.files[0]) {
@@ -84,16 +91,30 @@ async function inputChange() {
             reader.onload = function (e) {
                 // Création d'un élément img pour afficher l'image
                 const img = document.createElement('img');
+                // attribution d'une class
+                img.classList.add("previewRectangle")
                 // Définition de la source de l'image avec l'URL de données
                 img.src = e.target.result;
                 // Ajout de l'image à l'élément de prévisualisation
-                imagePreview.innerHTML = '';
-                imagePreview.appendChild(img);
+                icone.appendChild(img);
                 resolve();
             };
         });
-    }
-}
+    } }
+
+/* 
+    const icone = document.querySelector("#searchImage");
+    icone.innerHTML ="";
+
+    const nouvelleImage = document.querySelector("#inputId").value;
+
+    const image = document.createElement("img");
+    image.src = nouvelleImage;
+
+    icone.appendChild(image);
+*/
+
+
 
 
 async function ajouterImage() {
@@ -106,14 +127,14 @@ async function ajouterImage() {
      * 
      */
     const myForm = document.querySelector("#myForm");
+    console.log("voilà ce qu'envoie mon myForm", myForm);
     //j'ajoute la valeur selectionnée dans le inout caché qui porte le name "category" et qui va envoyer la donnée au bidule
     const selectCategorie = document.querySelector(".selectCategorie").value;
     const inputCategorie = document.querySelector(".inputCategorie");
     inputCategorie.value = selectCategorie;
 
     const infoformulaire = new FormData(myForm);
-    console.log("contenu de l'objet infoformulaire",infoformulaire);
-
+   
 
     try {
 
@@ -160,7 +181,7 @@ async function supprimerImage(id) {
         if (response.ok) {
             console.log(`Image avec l'ID ${id} supprimée avec succès.`);
             alert("Image  supprimée avec succès.");
-            
+
             const work = await fetch("http://localhost:5678/api/works").then(work => work.json());
 
         } else {
@@ -180,12 +201,12 @@ async function getSizeOfPage() {
     const documentWidth = document.documentElement.scrollWidth;
     const documentHeight = document.documentElement.scrollHeight;
 
-    
-     // Récupérer la taille de la fenêtre de visualisation
-     const viewportWidth = window.innerWidth;
-     const viewportHeight = window.innerHeight;
 
-    
+    // Récupérer la taille de la fenêtre de visualisation
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+
 
     // Calculer la taille totale de la page
     const totalWidth = Math.max(documentWidth, viewportWidth);
@@ -193,7 +214,7 @@ async function getSizeOfPage() {
 
     return { width: totalWidth, height: totalHeight };
 }
-getSizeOfPage() ;
+getSizeOfPage();
 
 //fonction pour créer la première modal
 async function modal1() {
@@ -204,7 +225,7 @@ async function modal1() {
     // Attendre que getSizeOfPage() récupère les dimensions de la page
     const pageSize = await getSizeOfPage();
     //attribuer la valeur 
-   overlay.style.height = pageSize.height + "px";
+    overlay.style.height = pageSize.height + "px";
     overlay.style.width = pageSize.width + "px";
     document.body.style.overflowX = "hidden";
 
@@ -292,7 +313,7 @@ btnAjoutImage.addEventListener("click", async function () {
 })
 
 const btnback = document.querySelector("#btnback")
-btnback.addEventListener("click", async function (event) { 
+btnback.addEventListener("click", async function (event) {
 
     const divModal1 = document.querySelector(".divModal1")
     divModal1.style.display = "block"
