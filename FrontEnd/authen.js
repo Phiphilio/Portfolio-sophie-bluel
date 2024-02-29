@@ -66,18 +66,19 @@ submit.addEventListener("click", async function(e) {
 
 const rechercheImage = document.querySelector("#inputId");
 
-rechercheImage.addEventListener("change", async function(){
+rechercheImage.addEventListener("change", async function () {
     await inputChange();
 })
 
 async function inputChange() {
     // récupère la valeur de l'input
     const input = document.querySelector("#inputId");
-    
 
-      // change l'affichage quand on a chargé une image
-   const icone = document.querySelector("#searchImage");
-   icone.innerHTML ="";
+    // fait disparaitre les icones déjà présentes
+    const icone = document.querySelector("#groupeRectangle");
+    icone.style.display = "none";
+
+    const rectange = document.querySelector("#searchImage")
 
     // Vérification s'il y a des fichiers sélectionnés
     if (input.files && input.files[0]) {
@@ -96,11 +97,12 @@ async function inputChange() {
                 // Définition de la source de l'image avec l'URL de données
                 img.src = e.target.result;
                 // Ajout de l'image à l'élément de prévisualisation
-                icone.appendChild(img);
+                rectange.appendChild(img);
                 resolve();
             };
         });
-    } }
+    }
+}
 
 /* 
     const icone = document.querySelector("#searchImage");
@@ -134,7 +136,7 @@ async function ajouterImage() {
     inputCategorie.value = selectCategorie;
 
     const infoformulaire = new FormData(myForm);
-   
+
 
     try {
 
