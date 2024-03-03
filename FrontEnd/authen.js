@@ -139,7 +139,7 @@ async function ajouterImage() {
 async function supprimerImage(id) {
     try {
         const response = await fetch(`http://localhost:5678/api/works/${id}`, {
-            method: "DELETE", // ou "PATCH" selon votre cas d'utilisation
+            method: "DELETE",
             headers: {
                 "Authorization": `Bearer ${clef}`, // Assurez-vous que votre clé d'autorisation est correcte
             }
@@ -236,13 +236,24 @@ async function modal1() {
 
     btnsupprime.forEach(btnsupprime => {
         btnsupprime.addEventListener("click", async function () {
+            //récupère le data-id de l'image associée au bouton supprimé
             const idImage = btnsupprime.dataset.idImage;
+
+            //récupère l'image en question grâce à ce même data-id stocké dans idImage
             const imageElement = document.querySelector(`[data-id="${idImage}"]`);
+
+            // récupère le parent pour pouvoir le ssupprimer plus tard de l'arbre dom
             const parentElement = imageElement.parentNode;
+
+            // même procéssus
+            const imageModal1 = document.querySelector(`[data-id-image = "${idImage}"]`);
+            const parentImageModal= imageModal1.parentNode;
 
             console.log(parentElement);
             if (parentElement) {
+                //supprime de l'arbre dom
                 parentElement.remove();
+                parentImageModal.remove();
             }
             supprimerImage(idImage)
         })
@@ -261,7 +272,7 @@ btnAjoutImage.addEventListener("click", async function () {
     divModal1.style.display = "none"
 
     //apparition de la seconde
-    const divModal2 = document.querySelector(".divModal2")
+    const divModal2 = document.getElementById("divModal2")
     divModal2.style.display = "block"
 
     //changement de titre
@@ -291,7 +302,7 @@ btnback.addEventListener("click", async function (event) {
     const divModal1 = document.getElementById("divModal1");
     divModal1.style.display = "block";
 
-    const divModal2 = document.querySelector(".divModal2")
+    const divModal2 = document.getElementById("divModal2")
     divModal2.style.display = "none";
 
 })
@@ -306,7 +317,7 @@ btnFermer1.addEventListener("click", async function (event) {
     const divModal1 = document.getElementById("divModal1");
     divModal1.style.display = "none";
 
-    const divModal2 = document.querySelector(".divModal2");
+    const divModal2 = document.getElementById("divModal2");
     divModal2.style.display = "none";
 
 
@@ -325,12 +336,13 @@ btnFermer2.addEventListener("click", async function (event) {
     const divModal1 = document.getElementById("divModal1");
     divModal1.style.display = "none";
 
-    const divModal2 = document.querySelector(".divModal2");
+    const divModal2 = document.getElementById("divModal2");
     divModal2.style.display = "none";
 
 
     const overlay = document.getElementById("overlay");
     overlay.style.display = "none";
+
 
 })
 
@@ -345,7 +357,7 @@ overlay.addEventListener("click", async function () {
     const divModal1 = document.getElementById("divModal1");
     divModal1.style.display = "none";
 
-    const divModal2 = document.querySelector(".divModal2");
+    const divModal2 = document.getElementById("divModal2");
     divModal2.style.display = "none";
 
 })
