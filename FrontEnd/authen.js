@@ -23,6 +23,9 @@ if (clef !== null) {
 
     //ajout du logout
     const logout = document.querySelector(".noLine");
+    logout.classList.remove("noLine");
+    logout.removeAttribute('href');
+    logout.classList.add("logout");
     logout.innerHTML = "logout";
 
     //suppression des groupes
@@ -34,35 +37,12 @@ if (clef !== null) {
     portf.style.display = "block";
 }
 
+const deconnexion = document.querySelector(".logout");
+deconnexion.addEventListener("click", async function () {
+    localStorage.removeItem('clef');
+    window.location.href = "index.html";
+})
 
-/*const submit = document.querySelector("#btnValider");
-
-submit.addEventListener("click", async function(e) {
-    const reponse = document.querySelector("#myForm");
-    console.log("ça passe");
-    e.preventDefault();
-    let datas = new FormData(reponse);
-    
-    try {
-        const response = await fetch("http://localhost:5678/api/works", {
-            method: "POST",
-            headers: {
-                "Authorization": `bearer ${clef}`
-            },
-            body: datas
-        });
-
-        if (response.ok) {
-            const responseData = await response.json();
-            console.log("ça passe aussi");
-            // Faire quelque chose avec les données de réponse
-        } else {
-            console.error("Erreur de réponse du serveur:", response.status);
-        }
-    } catch (erreur) {
-        console.error("Erreur lors de la requête:", erreur);
-    }
-});*/
 
 const rechercheImage = document.querySelector("#inputId");
 
@@ -80,7 +60,7 @@ async function inputChange() {
 
     const rectange = document.querySelector("#searchImage")
 
-    // Vérification s'il y a des fichiers sélectionnés
+    // Vérifie s'il y a des fichiers sélectionnés
     if (input.files && input.files[0]) {
         const reader = new FileReader();
 
@@ -103,19 +83,6 @@ async function inputChange() {
         });
     }
 }
-
-/* 
-    const icone = document.querySelector("#searchImage");
-    icone.innerHTML ="";
-
-    const nouvelleImage = document.querySelector("#inputId").value;
-
-    const image = document.createElement("img");
-    image.src = nouvelleImage;
-
-    icone.appendChild(image);
-*/
-
 
 
 
@@ -166,11 +133,6 @@ async function ajouterImage() {
 
 
 }
-/**<form action='http://localhost/traitementbackend' method='POST'>
- * <button type='submit'>Envoyer</button>s
- */
-
-
 
 
 // fonction pour supprimer les images
@@ -210,7 +172,6 @@ async function getSizeOfPage() {
     // Récupérer la taille de la fenêtre de visualisation
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
-
 
 
     // Calculer la taille totale de la page
@@ -265,7 +226,7 @@ async function modal1() {
     }
 
 
-    //tous léléments de la première modal sont ajouté à la div
+    //tous léléments de la première modal sont ajoutés à la div
     divModal1.appendChild(divTravaux)
 
     //tous léléments de la première modal sont ajouté au DOM
@@ -387,36 +348,3 @@ overlay.addEventListener("click", async function () {
 
 })
 
-
-
-/**
- * l'idée serait de créer tous les styles de tous les types de modal et de les masquer.
- * lorsque je clique sur le bouton ajouter une image
- */
-
-
-
-
-/*<figure style='background-image:url(chemin vers image)'><img src='icone de suppression'/></figure>*/
-
-
-
-
-
-
-/**
- * mettre l'image en background
- * <figure style='background-size:cover;background-repeat:no-repeat;width:120px;heigth:200px;background-image:url(http:// ....)' alt="nom de l'image">
-<img src="http:/imagedu bouton" alt="supprimer"/>
-</figure> */
-
-
-/*// modification du login en logout
- const logout = document.getElementById("noLine");
- console.log(logout)
- logout.innerText = "logout"
-
-//récupère son parent
-const ul = document.getElementById("logParent");
-ul.appendChild(logout)*/
-//
