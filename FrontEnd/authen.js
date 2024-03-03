@@ -12,9 +12,9 @@ const clef = window.sessionStorage.getItem("clef"); // récupère la clef et la 
 
 if (clef !== null) {
 
-    const edition = document.querySelector("#edition");
+    const edition = document.getElementById("edition");
     edition.style.display = "flex";
-    const btnModification = document.querySelector(".btnModification");
+    const btnModification = document.getElementById("btnModification");
 
     //appel de la fonction modal1()
     btnModification.addEventListener("click", async function () {
@@ -29,11 +29,11 @@ if (clef !== null) {
     logout.innerHTML = "logout";
 
     //suppression des groupes
-    const groupe = document.querySelector(".groupe");
+    const groupe = document.getElementById("groupe");
     groupe.innerHTML = "";
 
     //ajout du logo à côté du titre
-    const portf = document.querySelector(".port-titre span ");
+    const portf = document.querySelector("#port-titre span ");
     portf.style.display = "block";
 }
 
@@ -186,7 +186,7 @@ getSizeOfPage();
 async function modal1() {
 
     //apparition de l'overlay
-    const overlay = document.querySelector(".overlay");
+    const overlay = document.getElementById("overlay");
     overlay.style.display = "block";//la modal passe de display : none à block, ce qui la fait apparaitre
     // Attendre que getSizeOfPage() récupère les dimensions de la page
     const pageSize = await getSizeOfPage();
@@ -196,9 +196,9 @@ async function modal1() {
     document.body.style.overflowX = "hidden";
 
     //récupération de divModal1
-    const divModal1 = document.querySelector(".divModal1");
+    const divModal1 = document.getElementById("divModal1");
     divModal1.style.display = "block";
-    const divTravaux = document.querySelector(".divTravaux")
+    const divTravaux = document.getElementById("divTravaux")
     //récupère les images
     const works = await recupWorks()
 
@@ -253,16 +253,18 @@ async function modal1() {
 
 
 //écoute du click sur le bouton ajouter une image
-const btnAjoutImage = document.querySelector(".btnAjoutImage")
+const btnAjoutImage = document.getElementById("btnAjoutImage")
 btnAjoutImage.addEventListener("click", async function () {
 
     //disparition de la première modal
-    const divModal1 = document.querySelector(".divModal1")
+    const divModal1 = document.getElementById("divModal1")
     divModal1.style.display = "none"
 
+    //apparition de la seconde
     const divModal2 = document.querySelector(".divModal2")
     divModal2.style.display = "block"
 
+    //changement de titre
     const galerieModal2 = document.querySelector(".galerieModal2")
     galerieModal2.innerHTML = "Ajout photo";
 
@@ -286,7 +288,7 @@ btnback.addEventListener("click", async function (event) {
 
 
 
-    const divModal1 = document.querySelector(".divModal1");
+    const divModal1 = document.getElementById("divModal1");
     divModal1.style.display = "block";
 
     const divModal2 = document.querySelector(".divModal2")
@@ -298,17 +300,17 @@ const btnFermer1 = document.querySelector("#btnFermer1")
 btnFermer1.addEventListener("click", async function (event) {
 
     //pour ne pas que lees éléments se superposent avec ceux qui seront crées par la suite
-    const travauxModal1 = document.querySelector(".divTravaux");
+    const travauxModal1 = document.getElementById("divTravaux");
     travauxModal1.innerHTML = "";
 
-    const divModal1 = document.querySelector(".divModal1");
+    const divModal1 = document.getElementById("divModal1");
     divModal1.style.display = "none";
 
     const divModal2 = document.querySelector(".divModal2");
     divModal2.style.display = "none";
 
 
-    const overlay = document.querySelector(".overlay");
+    const overlay = document.getElementById("overlay");
     overlay.style.display = "none";
 
 })
@@ -317,30 +319,30 @@ const btnFermer2 = document.querySelector("#btnFermer2")
 btnFermer2.addEventListener("click", async function (event) {
 
     //pour ne pas que lees éléments se superposent avec ceux qui seront crées par la suite
-    const travauxModal1 = document.querySelector(".divTravaux");
+    const travauxModal1 = document.getElementById("divTravaux");
     travauxModal1.innerHTML = "";
 
-    const divModal1 = document.querySelector(".divModal1");
+    const divModal1 = document.getElementById("divModal1");
     divModal1.style.display = "none";
 
     const divModal2 = document.querySelector(".divModal2");
     divModal2.style.display = "none";
 
 
-    const overlay = document.querySelector(".overlay");
+    const overlay = document.getElementById("overlay");
     overlay.style.display = "none";
 
 })
 
-const overlay = document.querySelector(".overlay")
+const overlay = document.getElementById("overlay")
 overlay.addEventListener("click", async function () {
 
     //pour ne pas que lees éléments se superposent avec ceux qui seront crées par la suite
-    const travauxModal1 = document.querySelector(".divTravaux");
+    const travauxModal1 = document.getElementById("divTravaux");
     travauxModal1.innerHTML = "";
 
     overlay.style.display = "none";
-    const divModal1 = document.querySelector(".divModal1");
+    const divModal1 = document.getElementById("divModal1");
     divModal1.style.display = "none";
 
     const divModal2 = document.querySelector(".divModal2");

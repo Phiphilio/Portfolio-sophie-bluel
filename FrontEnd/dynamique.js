@@ -14,9 +14,9 @@ async function recupCats() {
 async function miseAJourDom() {
     const works = await recupWorks()
     const sectionPortofolio = document.querySelector("#portfolio");
-    const divGallery = document.querySelector(".gallery");
+    const divGallery = document.getElementById("gallery");
 
-    //j'actualise la section gallery pour  qu'elle redevienne vierge
+    //j'actualise la section gallery pour qu'elle redevienne vierge
     divGallery.innerHTML = "";
 
     for (let i = 0; i < works.length; i++) {
@@ -36,11 +36,11 @@ async function miseAJourDom() {
         // insertion de la description
         figcaption.innerText = works[i].title;
 
-        //mise en des éléments enfants de la balise figure
+        //mise en place des éléments enfants de la balise figure
         figure.appendChild(image);
         figure.appendChild(figcaption);
 
-        //mise en des éléments enfants de la div de class = gallery
+        //mise en place des éléments enfants de la div de class = gallery
         divGallery.appendChild(figure);
 
 
@@ -95,8 +95,8 @@ async function choixCategorie(categoryId) {
 
     const selectedCat = await galeriCategorie(categoryId);
 
-    const sectionPortofolio = document.querySelector("#portfolio");
-    const divGallery = document.querySelector(".gallery");
+    const sectionPortofolio = document.getElementById("portfolio");
+    const divGallery = document.getElementById("gallery");
     //j'actualise la section gallery pour  qu'elle redevienne vierge
     divGallery.innerHTML = "";
 
@@ -127,22 +127,22 @@ async function choixCategorie(categoryId) {
     sectionPortofolio.appendChild(divGallery);
 }
 
-const tous = document.querySelector(".tous");
+const tous = document.getElementById("tous");
 tous.addEventListener("click", async function () {
     await miseAJourDom();
 })
 
-const objets = document.querySelector(".objets");
+const objets = document.getElementById("objets");
 objets.addEventListener("click", async function () {
     await choixCategorie(1);
 })
 
-const appartements = document.querySelector(".appartements");
+const appartements = document.getElementById("appartements");
 appartements.addEventListener("click", async function () {
     await choixCategorie(2);
 })
 
-const hotels = document.querySelector(".hotels");
+const hotels = document.getElementById("hotels");
 hotels.addEventListener("click", async function () {
     await choixCategorie(3);
 })

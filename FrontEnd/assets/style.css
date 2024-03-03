@@ -155,7 +155,7 @@ body {
 	justify-content: center;
 }
 
-.editeur {
+#editeur {
 	width: 129px;
 	height: 19px;
 	display: flex;
@@ -165,7 +165,7 @@ body {
 
 
 
-.editeur button {
+#editeur button {
 	color: white;
 	background-color: black;
 	border: 1px;
@@ -305,7 +305,7 @@ li:hover {
 	color: #B1663C;
 }
 
-.noLine {
+.noLine, .logout {
 	text-decoration: none;
 	color: black;
 }
@@ -346,7 +346,7 @@ li:hover {
 	margin-bottom: 1em;
 }
 /**** ajout de ma part****/
-.port-titre {
+#port-titre {
     display: flex;
     flex-direction: row;
     text-align: center;
@@ -354,12 +354,12 @@ li:hover {
     justify-content: center;
 }
 
-.port-titre span {
+#port-titre span {
     margin-left: 35px;
     margin-top: 10px;
 	display: none;
 }
-.groupe {
+#groupe {
 	width: 40.6%;
 	/*585*/
 	border: 1px;
@@ -370,7 +370,7 @@ li:hover {
 }
 
 
-.groupe button {
+#groupe button {
 	border-radius: 60px;
 	border: 1px solid #1D6154;
 	font-family: Syne;
@@ -384,14 +384,14 @@ li:hover {
 	white-space: nowrap;
 }
 
-.groupe button:hover {
+#groupe button:hover {
 	color: #FFFFFF;
 	background-color: #1D6154;
 }
 
 
 
-.gallery {
+#gallery {
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -400,7 +400,7 @@ li:hover {
 	margin-top: 30px;
 }
 
-.gallery img {
+#gallery img {
 	width: 100%;
 
 }
@@ -460,7 +460,7 @@ footer nav ul {
 }
 
 /**modal**/
-.overlay {
+#overlay {
 	display: none;
 	background-color: rgba(0, 0, 0, 0.5);
 	position: absolute;
@@ -471,7 +471,7 @@ footer nav ul {
 	z-index: 0;
 }
 
-.divModal1 {
+#divModal1 {
 	display: none;
 	width: 630px;
 	height: 688px;
@@ -495,7 +495,7 @@ footer nav ul {
 	z-index : 2;
 }
 
-.divModal1 h1,
+#divModal1 h1,
 .divModal2 h1 {
 	font-family: Work Sans;
 	font-size: 26px;
@@ -516,7 +516,7 @@ footer nav ul {
 	user-select: none;
 }
 
-.divTravaux {
+#divTravaux {
 	width: 530px;
 	display: flex;
 	flex-wrap: wrap;
@@ -525,7 +525,7 @@ footer nav ul {
 	top: 110px;
 }
 
-.divTravaux figure {
+#divTravaux figure {
 	/*j'ai mis les travaux en images d'arrire plan*/
 	width: 18%;
 	margin-bottom: 25px;
@@ -534,7 +534,7 @@ footer nav ul {
 	height: 110px;
 }
 
-.divTravaux figure img {
+#divTravaux figure img {
 	width: 20px;
 	height: 22px;
 	position: relative;
@@ -544,7 +544,7 @@ footer nav ul {
 	/*je l'ai ajouté pour faciiter la compréhension*/
 }
 
-.divTravaux figure button {
+#divTravaux figure button {
 	width: 9px;
 	height: 11px;
 	position: absolute;
@@ -560,11 +560,11 @@ footer nav ul {
 	/* Indiquer que le bouton est cliquable */
 }
 
-.divTravaux figure button::before {
+#divTravaux figure button::before {
 	content: '\1F5D1';
 }
 
-.divModal1 span,
+#divModal1 span,
 .divModal2 span {
 	width: 420px;
 	top: 540px;
@@ -574,7 +574,7 @@ footer nav ul {
 	position: absolute;
 }
 
-.divModal1 button,
+#divModal1 button,
 .divModal2 button {
 	width: 237px;
 	height: 36px;
