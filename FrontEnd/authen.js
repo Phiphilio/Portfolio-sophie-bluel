@@ -126,6 +126,8 @@ async function ajouterImage() {
         console.log(reponse.status);
         if (reponse.status === 400) {
             alert("le formulaire n'a pas été correctement rempli");
+        } else if (reponse.status === 201) {
+            alert("l'image a été remplie avec succes !!! Veuillez rafraichir la page")
         }
     } catch (erreur) {
         console.error("erreur : ", erreur)
