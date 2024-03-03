@@ -476,27 +476,27 @@ footer nav ul {
 	width: 630px;
 	height: 688px;
 	top: 50%;
-	left: 25%;
+	left: 30%;
 	border-radius: 10px;
 	background: #FFFFFF;
 	position: absolute;
 	z-index : 2;
 }
 
-.divModal2 {
-	display: none;
-	width: 630px;
-	height: 688px;
-	top: 50%;
-	left: 25%;
-	border-radius: 10px;
-	background: #FFFFFF;
-	position: absolute;
-	z-index : 2;
+#divModal2 {
+    display: none;
+    width: 630px;
+    height: 688px;
+    top: 50%;
+    left: 30%;
+    border-radius: 10px;
+    background: #FFFFFF;
+    position: absolute;
+    z-index: 2;
 }
 
 #divModal1 h1,
-.divModal2 h1 {
+#divModal2 h1 {
 	font-family: Work Sans;
 	font-size: 26px;
 	font-weight: 400;
@@ -565,7 +565,7 @@ footer nav ul {
 }
 
 #divModal1 span,
-.divModal2 span {
+#divModal2 span {
 	width: 420px;
 	top: 540px;
 	left: 115px;
@@ -575,7 +575,7 @@ footer nav ul {
 }
 
 #divModal1 button,
-.divModal2 button {
+#divModal2 button {
 	width: 237px;
 	height: 36px;
 	top: 600px;
