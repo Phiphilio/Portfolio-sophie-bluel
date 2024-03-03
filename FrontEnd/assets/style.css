@@ -606,6 +606,10 @@ footer nav ul {
 	top: 2%;
 }
 
+#btnFermer1 {
+	left: 94%;
+}
+
 .rectangle {
 	display: block;
 	align-items: center;
