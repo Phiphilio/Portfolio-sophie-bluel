@@ -25,7 +25,7 @@ buttonLogin.addEventListener("click", async function (event) {
     })
         .then(response => {
             console.log(response.status);
-            if (response.status === 404) {
+            if (response.status === 401) {
                 alert("erreur dans l'identifiant ou le mot de passe"); // affiche ce message sur une fenêtre 
             }
 
