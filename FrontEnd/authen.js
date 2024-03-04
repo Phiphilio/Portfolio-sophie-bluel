@@ -194,7 +194,7 @@ async function modal1() {
     const pageSize = await getSizeOfPage();
     //attribuer la valeur 
     overlay.style.height = pageSize.height + "px";
-    overlay.style.width = pageSize.width + "px";
+    overlay.style.width = "100vw";
     document.body.style.overflowX = "hidden";
 
     //récupération de divModal1
@@ -214,7 +214,7 @@ async function modal1() {
         //création de la balise img
         const image = document.createElement("img");
         // affectation de l'url de l'image de la corebil
-        image.src = "https://cdn.icon-icons.com/icons2/17/PNG/256/recyclebinfilled_recycling_full_garbage_1993.png";
+        image.src = "/assets/images/corbeille.svg";
         image.classList.add("btnsupprime");
         // mise en place du alt au cas l'image ne s'affiche pas
         image.alt = works[i].title;
