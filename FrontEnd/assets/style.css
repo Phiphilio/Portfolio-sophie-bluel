@@ -541,9 +541,13 @@ footer nav ul {
 	left: 70px;
 	top: 5px;
 	cursor: pointer;
+	background-color: white;
 	/*je l'ai ajouté pour faciiter la compréhension*/
 }
 
+svg path {
+	fill: #CBD6DC !important;
+}
 #divTravaux figure button {
 	width: 9px;
 	height: 11px;
