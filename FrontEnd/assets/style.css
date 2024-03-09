@@ -310,8 +310,9 @@ li:hover {
 	color: black;
 }
 
-.noLine:hover {
+.noLine:hover, .logout:hover {
 	color: #B1663C;
+	cursor: pointer;
 }
 
 #introduction {

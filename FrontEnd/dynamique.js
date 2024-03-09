@@ -9,7 +9,38 @@ async function recupCats() {
     const classification = await fetch(" http://localhost:5678/api/categories").then(classification => classification.json());
     return classification;
 }
+async function categorieDom () {
+    const cate = await recupCats();
+    const groupe = document.getElementById("groupe");
+    console.log(groupe)
+    for (let i = 0; i < cate.length; i++) {
+        //création des boutons
+        const btn = document.createElement("button");
+        //attribution des id
+        btn.setAttribute("id", cate[i].name );
+        //attribution du nom
+        btn.innerText = cate[i].name;
+        //écoute d'un évènement
+        btn.addEventListener("click", async function () {
 
+            const boutons = groupe.getElementsByTagName("button");
+            for (let j = 0; j < boutons.length; j++) {
+                boutons[j].style.color = ""; // Réinitialisation de la couleur du texte
+                boutons[j].style.backgroundColor = ""; // Réinitialisation de la couleur de fond
+            }
+
+            btn.style.color = "#FFFFFF";
+            btn.style.backgroundColor = "#1D6154";
+            await choixCategorie(cate[i].id);
+        })
+        //ajout à l'arbre dom
+        groupe.appendChild(btn);
+    }
+}
+//par mesure de prudence, j'ai fait en sorte que la fonction "categorieDom" s'execute APRES le chargement du DOM
+document.addEventListener("DOMContentLoaded", async function () {
+    await categorieDom();
+});
 
 async function miseAJourDom() {
     const works = await recupWorks()
@@ -46,15 +77,6 @@ async function miseAJourDom() {
 
     }
     sectionPortofolio.appendChild(divGallery);
-   
-    // Cette fonction ajuste la hauteur du body pour s'adapter à la hauteur du contenu
-function ajusterHauteurBody() {
-    const contenuHeight = document.documentElement.scrollHeight; // Mesure la hauteur totale du contenu
-    document.body.style.height = contenuHeight + 'px'; // Ajuste la hauteur du body
-}
-
-// Appeler la fonction pour ajuster la hauteur du body au chargement de la page
-window.onload = ajusterHauteurBody;
 
 }
 
@@ -85,7 +107,7 @@ async function galeriCategorie(categoryId) {
             galerie.categorie3.push(works[i]);
         }
     }
-
+        // nous renvoie le résultat correespondant si la condition est remplie
     return categoryId === 1 ? galerie.categorie1 : categoryId === 2 ? galerie.categorie2 : galerie.categorie3;
 
 }
@@ -129,22 +151,15 @@ async function choixCategorie(categoryId) {
 
 const tous = document.getElementById("tous");
 tous.addEventListener("click", async function () {
+    const boutons = groupe.getElementsByTagName("button");
+    for (let j = 0; j < boutons.length; j++) {
+        boutons[j].style.color = ""; // Réinitialisation de la couleur du texte
+        boutons[j].style.backgroundColor = ""; // Réinitialisation de la couleur de fond
+    }
+
+    tous.style.color = "#FFFFFF";
+    tous.style.backgroundColor = "#1D6154";
     await miseAJourDom();
-})
-
-const objets = document.getElementById("objets");
-objets.addEventListener("click", async function () {
-    await choixCategorie(1);
-})
-
-const appartements = document.getElementById("appartements");
-appartements.addEventListener("click", async function () {
-    await choixCategorie(2);
-})
-
-const hotels = document.getElementById("hotels");
-hotels.addEventListener("click", async function () {
-    await choixCategorie(3);
 })
 
 /**

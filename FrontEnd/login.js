@@ -3,7 +3,6 @@ const buttonLogin = document.getElementById("buttonLogin");
 
 buttonLogin.addEventListener("click", async function (event) {
     event.preventDefault();
-    console.log("ça soumet")
 
     const emailInput = document.getElementById("email").value;
 
@@ -25,7 +24,7 @@ buttonLogin.addEventListener("click", async function (event) {
     })
         .then(response => {
             console.log(response.status);
-            if (response.status === 401) {
+            if (response.status === 401 || response.status ===404) {
                 alert("erreur dans l'identifiant ou le mot de passe"); // affiche ce message sur une fenêtre 
             }
 

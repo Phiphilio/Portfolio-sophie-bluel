@@ -18,7 +18,10 @@ if (clef !== null) {
 
     //appel de la fonction modal1()
     btnModification.addEventListener("click", async function () {
+        const divTravaux = document.getElementById("divTravaux");
+        divTravaux.innerHTML = "";
         modal1();
+        console.log("la moda1 est appelé pour la premiere fois");
     })
 
     //ajout du logout
@@ -35,11 +38,18 @@ if (clef !== null) {
     //ajout du logo à côté du titre
     const portf = document.querySelector("#port-titre span ");
     portf.style.display = "block";
+
+    //disparition de la section des categories
+    const groupeGallery = document.getElementById("groupe");
+    groupeGallery.style.display = "none"
 }
 
 const deconnexion = document.querySelector(".logout");
+console.log("voilà ce que contient deconnexion :", deconnexion);
 deconnexion.addEventListener("click", async function () {
-    localStorage.removeItem('clef');
+
+
+    sessionStorage.removeItem('clef');
     window.location.href = "index.html";
 })
 
@@ -86,6 +96,7 @@ async function inputChange() {
 
 
 
+
 async function ajouterImage() {
     /**
      *  mon code ne marchait pas pour 2 raisons
@@ -96,11 +107,28 @@ async function ajouterImage() {
      * 
      */
     const myForm = document.querySelector("#myForm");
-    console.log("voilà ce qu'envoie mon myForm", myForm);
     //j'ajoute la valeur selectionnée dans le inout caché qui porte le name "category" et qui va envoyer la donnée au bidule
     const selectCategorie = document.querySelector(".selectCategorie").value;
     const inputCategorie = document.querySelector(".inputCategorie");
     inputCategorie.value = selectCategorie;
+
+    //pour afficher dynamiquement l'image
+    const divGallery = document.getElementById("gallery");
+    const divTravaux = document.getElementById("divTravaux");
+    const inputImage = document.getElementById("inputId");
+    const afficheImage = inputImage.files[0]; // Récupère le fichier sélectionné
+
+    if (!afficheImage) {
+        console.error("Aucune image sélectionnée.");
+        return;
+    }
+
+    // Affichage de l'image sélectionnée
+    const imagePreview = document.createElement("img");
+    imagePreview.src = URL.createObjectURL(afficheImage);
+    imagePreview.alt = afficheImage.name; // Utilisez le nom du fichier comme texte alternatif
+    divGallery.appendChild(imagePreview); // Ajoutez l'image à la page (vous pouvez remplacer document.body par un autre élément)
+
 
     const infoformulaire = new FormData(myForm);
 
@@ -249,7 +277,7 @@ async function modal1() {
 
             // même procéssus
             const imageModal1 = document.querySelector(`[data-id-image = "${idImage}"]`);
-            const parentImageModal= imageModal1.parentNode;
+            const parentImageModal = imageModal1.parentNode;
 
             console.log(parentElement);
             if (parentElement) {
@@ -270,8 +298,11 @@ const btnAjoutImage = document.getElementById("btnAjoutImage")
 btnAjoutImage.addEventListener("click", async function () {
 
     //disparition de la première modal
-    const divModal1 = document.getElementById("divModal1")
+    const divModal1 = document.getElementById("divModal1");
+    console.log("voilà ce que contient divModal1 :", divModal1);
     divModal1.style.display = "none"
+
+
 
     //apparition de la seconde
     const divModal2 = document.getElementById("divModal2")
@@ -299,10 +330,13 @@ btnAjoutImage.addEventListener("click", async function () {
 const btnback = document.querySelector("#btnback")
 btnback.addEventListener("click", async function (event) {
 
+    const divTravaux = document.getElementById("divTravaux");
+    divTravaux.innerHTML = "";
+    modal1();
+    console.log("la moda1 est appelé pour la premiere fois");
 
-
-    const divModal1 = document.getElementById("divModal1");
-    divModal1.style.display = "block";
+    /*const divModal1 = document.getElementById("divModal1");
+    divModal1.style.display = "block";*/
 
     const divModal2 = document.getElementById("divModal2")
     divModal2.style.display = "none";
